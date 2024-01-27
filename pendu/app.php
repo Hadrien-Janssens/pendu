@@ -5,8 +5,7 @@ require_once './functions/recupLettre.php';
 
 $motATrouver = choisir_unMot();
 
-underscrore($motATrouver,[]);
+underscrore($motATrouver);
 recupLettre($motATrouver);
-underscrore($motATrouver, recupLettre($motATrouver)[0])
 
 ?>
