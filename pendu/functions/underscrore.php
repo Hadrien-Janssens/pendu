@@ -1,28 +1,49 @@
 <?php
+require_once (__DIR__."/dessinPendu.php");
+require_once (__DIR__."/nombreDeVie.php");
 
-function underscrore($mot, $lettreTapee = null , $tableauDeLettresCorrects=[]){
+function underscrore($mot, $lettreTapee = null , $tableauDeLettresCorrects=[],$vie=7){
     $tableauMot= str_split($mot);
 
-//pour l'avoir en dur et recommencer une partie apres avoir eteind l'ordi , il faut stocker les tableaux et mot dans un fichier JSON
+
 
     if ($lettreTapee == null) {
+        nombreDeVie($vie,$mot);
+        dessinPendu(7);
+        echo PHP_EOL;
+
+        echo ' Le mot à trouver : ';
         for ($i=0 ; $i < count($tableauMot) ; $i++) { 
             echo '_ ';
         }
+        
+
     }
 
-        else {
-            foreach ($tableauMot as $key => $value) {
-               if (in_array($value,$tableauDeLettresCorrects)) {
-                echo "$value ";
-               }
-               else {
-                echo "_ ";
-               }
+        elseif (is_array($tableauDeLettresCorrects)) {
+           
+        echo ' Le mot à trouver : ';
+                
+                foreach ($tableauMot as $key => $value) {
+                
+                if (in_array($value,$tableauDeLettresCorrects)) {
+                    echo "$value ";
+                }
+                else {
+                    echo "_ ";
+                }
             }
         }
-   
-    }
+        else {
+        echo ' Le mot à trouver : ';
+
+            for ($i=0 ; $i < count($tableauMot) ; $i++) { 
+                echo '_ ';
+            }
+        }
+        echo PHP_EOL.PHP_EOL;
+        }
+ 
 
 
 
